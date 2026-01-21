@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Code2, Sparkles, Rocket } from 'lucide-react';
 import AppLayout from '../Layouts/AppLayout';
 import ProjectCard from '../Components/ProjectCard';
 import CompaniesCarousel from '../Components/CompaniesCarousel';
@@ -67,6 +67,116 @@ export default function Home({ projects, testimonials, companies }) {
                     </motion.div>
                 </div>
             </section>
+
+            {/* About Me Section */}
+            <section className="py-24 bg-gradient-to-b from-background to-card/30">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="max-w-4xl mx-auto"
+                    >
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                                Welcome to My Digital Space
+                            </h2>
+                            <p className="text-muted-foreground text-lg">
+                                Where creativity meets functionality
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 }}
+                                className="bg-card border border-border/50 rounded-xl p-6 hover:border-electric/50 transition-all duration-300 group"
+                            >
+                                <div className="w-12 h-12 bg-electric/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-electric/20 transition-colors">
+                                    <Code2 className="w-6 h-6 text-electric" />
+                                </div>
+                                <h3 className="font-semibold text-foreground mb-2">Clean Code</h3>
+                                <p className="text-sm text-muted-foreground">
+                                    Writing maintainable, scalable solutions with modern best practices
+                                </p>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="bg-card border border-border/50 rounded-xl p-6 hover:border-electric/50 transition-all duration-300 group"
+                            >
+                                <div className="w-12 h-12 bg-electric/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-electric/20 transition-colors">
+                                    <Sparkles className="w-6 h-6 text-electric" />
+                                </div>
+                                <h3 className="font-semibold text-foreground mb-2">Design Focus</h3>
+                                <p className="text-sm text-muted-foreground">
+                                    Creating beautiful interfaces that users love to interact with
+                                </p>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="bg-card border border-border/50 rounded-xl p-6 hover:border-electric/50 transition-all duration-300 group"
+                            >
+                                <div className="w-12 h-12 bg-electric/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-electric/20 transition-colors">
+                                    <Rocket className="w-6 h-6 text-electric" />
+                                </div>
+                                <h3 className="font-semibold text-foreground mb-2">Fast Delivery</h3>
+                                <p className="text-sm text-muted-foreground">
+                                    Efficient development without compromising on quality
+                                </p>
+                            </motion.div>
+                        </div>
+
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4 }}
+                            className="bg-card border border-border/50 rounded-2xl p-8 md:p-10"
+                        >
+                            <div className="flex flex-col md:flex-row items-center gap-8">
+                                <div className="flex-1">
+                                    <h3 className="text-2xl font-bold text-foreground mb-4">
+                                        Let's Build Something Amazing Together
+                                    </h3>
+                                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                                        I'm a passionate full-stack developer specializing in Laravel and React. 
+                                        With a keen eye for design and a commitment to clean code, I transform ideas 
+                                        into engaging digital experiences. Whether you need a stunning portfolio, 
+                                        a robust web application, or something in between, I'm here to help bring 
+                                        your vision to life.
+                                    </p>
+                                    <Link
+                                        href="/about"
+                                        className="group inline-flex items-center gap-2 px-6 py-3 bg-electric text-white rounded-lg font-medium hover:bg-electric/90 transition-all duration-200 hover:shadow-lg hover:shadow-electric/20"
+                                    >
+                                        More About Me
+                                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Link>
+                                </div>
+                                <div className="hidden lg:block">
+                                    <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-electric/20 to-electric/5 border border-electric/20 flex items-center justify-center">
+                                        <Code2 className="w-24 h-24 text-electric/40" />
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Companies Carousel */}
+            <CompaniesCarousel companies={companies} />
 
             {/* Featured Projects Section */}
             {projects && projects.length > 0 && (
@@ -194,8 +304,6 @@ export default function Home({ projects, testimonials, companies }) {
                 </section>
             )}
 
-            {/* Companies Carousel */}
-            <CompaniesCarousel companies={companies} />
         </AppLayout>
     );
 }

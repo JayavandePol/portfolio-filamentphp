@@ -48,6 +48,22 @@ export default function Navbar() {
                     <div className="hidden md:flex md:items-center md:space-x-1">
                         {navigation.map((item) => {
                             const isActive = window.location.pathname === item.href;
+                            const isExternal = item.href.startsWith('http');
+                            
+                            if (isExternal) {
+                                return (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="relative px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 text-muted-foreground hover:text-foreground"
+                                    >
+                                        {item.name}
+                                    </a>
+                                );
+                            }
+                            
                             return (
                                 <Link
                                     key={item.name}
@@ -113,6 +129,23 @@ export default function Navbar() {
                         <div className="px-4 pt-2 pb-3 space-y-1">
                             {navigation.map((item) => {
                                 const isActive = window.location.pathname === item.href;
+                                const isExternal = item.href.startsWith('http');
+                                
+                                if (isExternal) {
+                                    return (
+                                        <a
+                                            key={item.name}
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block px-4 py-2 text-base font-medium rounded-md transition-colors text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    );
+                                }
+                                
                                 return (
                                     <Link
                                         key={item.name}
