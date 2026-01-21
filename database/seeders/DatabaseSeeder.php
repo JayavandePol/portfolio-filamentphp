@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Add more social options (tiktok, discord, etc)
+        $this->call([
+            SocialLinksSeeder::class,
+        ]);
     }
 }

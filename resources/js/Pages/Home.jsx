@@ -49,10 +49,20 @@ export default function Home({ projects, testimonials, companies }) {
                             Web Developer & Designer crafting beautiful, functional experiences that make a difference.
                         </p>
 
+                        {/* Responsive main hero link: text link on large screens, button on small screens */}
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            {/* Text link for large screens */}
                             <Link
                                 href="/projects"
-                                className="group inline-flex items-center gap-2 px-8 py-3 bg-electric text-white rounded-lg font-medium hover:bg-electric/90 transition-all duration-200 hover:shadow-lg hover:shadow-electric/20"
+                                className="hidden sm:inline-flex items-center gap-2 text-electric hover:underline font-medium group"
+                            >
+                                View My Work
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                            {/* Button for small screens */}
+                            <Link
+                                href="/projects"
+                                className="inline-flex sm:hidden items-center gap-2 px-8 py-3 bg-electric text-white rounded-lg font-medium hover:bg-electric/90 transition-all duration-200 hover:shadow-lg hover:shadow-electric/20"
                             >
                                 View My Work
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -67,6 +77,9 @@ export default function Home({ projects, testimonials, companies }) {
                     </motion.div>
                 </div>
             </section>
+
+            {/* Companies Carousel */}
+            <CompaniesCarousel companies={companies} />
 
             {/* About Me Section */}
             <section className="py-24 bg-gradient-to-b from-background to-card/30">
@@ -175,9 +188,6 @@ export default function Home({ projects, testimonials, companies }) {
                 </div>
             </section>
 
-            {/* Companies Carousel */}
-            <CompaniesCarousel companies={companies} />
-
             {/* Featured Projects Section */}
             {projects && projects.length > 0 && (
                 <section className="py-24 bg-background">
@@ -236,14 +246,33 @@ export default function Home({ projects, testimonials, companies }) {
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            className="mb-16 text-center"
+                            className="mb-16 flex flex-col sm:flex-row sm:items-center sm:justify-between text-center sm:text-left"
                         >
-                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                                What Clients Say
-                            </h2>
-                            <p className="text-muted-foreground max-w-2xl mx-auto">
-                                Feedback from amazing people I've worked with
-                            </p>
+                            <div>
+                                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-0">
+                                    What Clients Say
+                                </h2>
+                                <p className="text-muted-foreground max-w-2xl mx-auto sm:mx-0">
+                                    Feedback from amazing people I've worked with
+                                </p>
+                            </div>
+                            {/* Desktop: purple link, Mobile: purple button */}
+                            <div className="mt-6 sm:mt-0">
+                                <Link
+                                    href="/testimonials"
+                                    className="hidden sm:inline-flex items-center gap-2 text-electric hover:underline font-medium group"
+                                >
+                                    View all
+                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                                <Link
+                                    href="/testimonials"
+                                    className="inline-flex sm:hidden items-center gap-2 px-6 py-3 bg-electric text-white rounded-lg font-medium hover:bg-electric/90 transition-all duration-200 hover:shadow-lg hover:shadow-electric/20 mt-2"
+                                >
+                                    View all
+                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                            </div>
                         </motion.div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
