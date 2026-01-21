@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\SocialLink;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Share social links with all Inertia views
+        Inertia::share([
+            'socialLinks' => fn () => SocialLink::where('is_visible', true)
+                ->orderBy('sort_order')
+                ->orderBy('platform')
+                ->get(['id', 'platform', 'url', 'icon']),
+        ]);
     }
 }

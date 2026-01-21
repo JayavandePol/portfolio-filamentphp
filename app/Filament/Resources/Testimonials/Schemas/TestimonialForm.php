@@ -6,6 +6,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
@@ -34,7 +35,9 @@ class TestimonialForm
                             ->image()
                             ->imageEditor()
                             ->circleCropper()
+                            ->disk('public')
                             ->directory('testimonials/avatars')
+                            ->visibility('public')
                             ->maxSize(2048)
                             ->columnSpanFull(),
                     ]),
@@ -76,6 +79,10 @@ class TestimonialForm
                                     ])
                                     ->required(),
                             ]),
+                        Toggle::make('is_featured')
+                            ->label('Featured on Homepage')
+                            ->helperText('Featured testimonials appear on the homepage')
+                            ->default(false),
                     ]),
             ]);
     }
