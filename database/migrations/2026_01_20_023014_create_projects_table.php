@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->json('description')->nullable();
-            $table->string('hero_image')->nullable();
+            $table->string( 'hero_image')->nullable();
             $table->string('status')->default('draft');
             $table->timestamp('published_at')->nullable();
             $table->string('url')->nullable();
