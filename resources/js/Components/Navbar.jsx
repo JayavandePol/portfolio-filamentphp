@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, LayoutDashboard } from 'lucide-react';
 import { cn } from '../lib/utils';
+import '@fontsource/poppins/700.css';
+import '../../css/ripple.css';
 
 const navigation = [
     { name: 'Home', href: '/' },

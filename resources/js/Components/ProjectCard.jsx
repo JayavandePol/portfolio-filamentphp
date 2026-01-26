@@ -34,7 +34,7 @@ export default function ProjectCard({ project, index = 0 }) {
         >
             <div
                 ref={cardRef}
-                className="spotlight group relative h-full bg-card border border-border/50 rounded-xl overflow-hidden transition-all duration-300 hover:border-border"
+                className="spotlight group relative h-full bg-card/70 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-electric/60 transition-all duration-300 hover:scale-[1.025] active:scale-[0.98]"
             >
                 {/* Hero Image */}
                 {project.hero_image_url && (

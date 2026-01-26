@@ -82,7 +82,9 @@ export default function Home({ projects, testimonials, companies }) {
             <CompaniesCarousel companies={companies} />
 
             {/* About Me Section */}
-            <section className="py-24 bg-gradient-to-b from-background to-card/30">
+            <section className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-secondary/10 to-card/30">
+                {/* Subtle grid pattern overlay */}
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#27272a11_1px,transparent_1px),linear-gradient(to_bottom,#27272a11_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-10 z-0" />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -190,7 +192,9 @@ export default function Home({ projects, testimonials, companies }) {
 
             {/* Featured Projects Section */}
             {projects && projects.length > 0 && (
-                <section className="py-24 bg-background">
+                <section className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-electric/5 to-secondary/10">
+                    {/* Subtle dot pattern overlay */}
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,#8b5cf633_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-10 z-0" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -240,7 +244,9 @@ export default function Home({ projects, testimonials, companies }) {
 
             {/* Testimonials Preview */}
             {testimonials && testimonials.length > 0 && (
-                <section className="py-24 bg-background border-t border-border/50">
+                <section className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-electric/5 to-secondary/10 border-t border-border/50">
+                    {/* Subtle diagonal lines overlay */}
+                    <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(135deg,#8b5cf622_0_2px,transparent_2px_40px)] opacity-10 z-0" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <motion.div
                             initial={{ opacity: 0 }}

@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import '@fontsource/poppins/700.css';
 import AppLayout from '../Layouts/AppLayout';
 import { motion } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
@@ -28,7 +29,7 @@ export default function About({ skills = [], experiences = [] }) {
                             transition={{ duration: 0.5 }}
                             className="max-w-4xl mx-auto"
                         >
-                            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-electric via-purple-400 to-electric bg-clip-text text-transparent">
+                            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-electric via-purple-400 to-electric bg-clip-text text-transparent font-['Poppins']">
                                 About Me
                             </h1>
                             <div className="prose prose-invert prose-lg max-w-none">
@@ -62,7 +63,7 @@ export default function About({ skills = [], experiences = [] }) {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center font-['Poppins']">
                                 Skills & Technologies
                             </h2>
                             
@@ -102,7 +103,7 @@ export default function About({ skills = [], experiences = [] }) {
                                                         whileInView={{ width: `${skill.proficiency}%` }}
                                                         viewport={{ once: true }}
                                                         transition={{ duration: 1, delay: index * 0.05 + 0.3 }}
-                                                        className="h-full rounded-full"
+                                                        className="h-full rounded-full shadow-md"
                                                         style={{ backgroundColor: skill.color }}
                                                     />
                                                 </div>

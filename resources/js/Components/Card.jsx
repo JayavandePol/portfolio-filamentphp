@@ -19,7 +19,9 @@ export default function Card({ children, className = '', animate = true, delay =
     return (
         <CardComponent
             className={cn(
-                'bg-card border border-border/50 overflow-hidden rounded-xl hover:border-border transition-colors',
+                // Glassmorphism + shadow + hover
+                'bg-card/70 backdrop-blur-md border border-border/50 overflow-hidden rounded-xl shadow-xl hover:shadow-2xl hover:border-electric/60 transition-all duration-300',
+                'hover:scale-[1.025] active:scale-[0.98]',
                 className
             )}
             variants={animate ? cardVariants : undefined}

@@ -9,7 +9,7 @@ export default function Button({
     as,
     ...props 
 }) {
-    const baseClasses = 'inline-flex items-center px-4 py-2 border rounded-md font-semibold text-sm transition-colors duration-150';
+    const baseClasses = 'inline-flex items-center px-4 py-2 border rounded-md font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-electric/60 focus:ring-offset-2 active:scale-95 relative overflow-hidden group';
     
     const variants = {
         primary: 'bg-gray-900 text-white border-transparent hover:bg-gray-800 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900',
@@ -19,10 +19,24 @@ export default function Button({
 
     const classes = `${baseClasses} ${variants[variant]} ${className}`;
 
+    // Ripple effect
+    const handleRipple = (e) => {
+        const button = e.currentTarget;
+        const circle = document.createElement('span');
+        const diameter = Math.max(button.clientWidth, button.clientHeight);
+        const radius = diameter / 2;
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`;
+        circle.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`;
+        circle.className = 'absolute bg-electric/30 rounded-full pointer-events-none animate-ripple';
+        button.appendChild(circle);
+        setTimeout(() => circle.remove(), 600);
+    };
+
     // External link (regular <a>)
     if (as === 'a' || (href && (href.startsWith('http') || href.startsWith('mailto')))) {
         return (
-            <a href={href} className={classes} {...props}>
+            <a href={href} className={classes} {...props} onClick={handleRipple}>
                 {children}
             </a>
         );
@@ -31,7 +45,7 @@ export default function Button({
     // Internal Inertia link
     if (href) {
         return (
-            <Link href={href} className={classes} {...props}>
+            <Link href={href} className={classes} {...props} onClick={handleRipple}>
                 {children}
             </Link>
         );
@@ -39,7 +53,7 @@ export default function Button({
 
     // Button
     return (
-        <button type={type} className={classes} {...props}>
+        <button type={type} className={classes} {...props} onClick={handleRipple}>
             {children}
         </button>
     );
