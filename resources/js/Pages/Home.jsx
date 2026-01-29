@@ -4,184 +4,174 @@ import { ArrowRight, Code2, Sparkles, Rocket } from 'lucide-react';
 import AppLayout from '../Layouts/AppLayout';
 import ProjectCard from '../Components/ProjectCard';
 import CompaniesCarousel from '../Components/CompaniesCarousel';
+import BackgroundBeams from '../Components/BackgroundBeams';
+import Button from '../Components/Button';
 import { cn } from '../lib/utils';
 
-export default function Home({ projects, testimonials, companies }) {
+export default function Home({ projects, testimonials, companies, projectsCount = 6 }) {
     return (
         <AppLayout>
             <Head title="Home" />
 
             {/* Hero Section */}
-            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-                {/* Gradient Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20" />
-                
-                {/* Grid Pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-20" />
+            <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden">
+                <BackgroundBeams />
 
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <motion.div
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/50 mb-8"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm mb-8 hover:bg-white/[0.05] transition-colors cursor-default"
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.1 }}
+                            transition={{ delay: 0.2 }}
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-electric opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-electric"></span>
                             </span>
-                            <span className="text-sm text-muted-foreground">Available for new projects</span>
+                            <span className="text-sm text-gray-300 font-medium tracking-wide">Available for new projects</span>
                         </motion.div>
 
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6">
-                            <span className="block text-foreground">Hi, I'm</span>
-                            <span className="block bg-gradient-to-r from-foreground via-electric to-foreground bg-clip-text text-transparent">
-                                Jaya van de Pol
+                        <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-8 leading-tight">
+                            <span className="block text-white mb-2">Creativity meets</span>
+                            <span className="block text-gradient-electric drop-shadow-2xl">
+                                digital execution
                             </span>
                         </h1>
 
-                        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12">
-                            Web Developer & Designer crafting beautiful, functional experiences that make a difference.
+                        <p className="text-xl md:text-2xl text-muted-foreground/80 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                            Software Development Student with a passion for crafting exceptional digital experiences.
+                            I transform complex ideas into elegant, scalable solutions while continuously learning and growing in the field.
                         </p>
 
-                        {/* Responsive main hero link: text link on large screens, button on small screens */}
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            {/* Text link for large screens */}
-                            <Link
-                                href="/projects"
-                                className="hidden sm:inline-flex items-center gap-2 text-electric hover:underline font-medium group"
-                            >
-                                View My Work
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                            {/* Button for small screens */}
-                            <Link
-                                href="/projects"
-                                className="inline-flex sm:hidden items-center gap-2 px-8 py-3 bg-electric text-white rounded-lg font-medium hover:bg-electric/90 transition-all duration-200 hover:shadow-lg hover:shadow-electric/20"
-                            >
-                                View My Work
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                            <Link
-                                href="/testimonials"
-                                className="inline-flex items-center gap-2 px-8 py-3 bg-secondary text-foreground rounded-lg font-medium hover:bg-secondary/80 transition-all duration-200 border border-border/50"
-                            >
-                                Testimonials
-                            </Link>
+                        <div className="flex gap-6 justify-center items-center mb-16">
+                            <Button href="/projects" variant="primary" className="text-lg px-8 py-4 shadow-electric/20">
+                                View My Work <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
+                        </div>
+
+                        {/* Stats Section */}
+                        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto border-t border-white/10 pt-8">
+                            <div>
+                                <h3 className="text-3xl font-bold text-white mb-1">3+</h3>
+                                <p className="text-sm text-muted-foreground uppercase tracking-wider">Years Experience</p>
+                            </div>
+                            <div>
+                                <h3 className="text-3xl font-bold text-white mb-1">{projectsCount}+</h3>
+                                <p className="text-sm text-muted-foreground uppercase tracking-wider">Projects Completed</p>
+                            </div>
+                            <div>
+                                <h3 className="text-3xl font-bold text-white mb-1">100%</h3>
+                                <p className="text-sm text-muted-foreground uppercase tracking-wider">Happy Clients</p>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
+
+                {/* Scroll Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 1 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                >
+                    <div className="w-[1px] h-24 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+                </motion.div>
             </section>
 
             {/* Companies Carousel */}
-            <CompaniesCarousel companies={companies} />
+            <div className="relative z-20 border-y border-white/[0.05] bg-background/50 backdrop-blur-sm">
+                <CompaniesCarousel companies={companies} />
+            </div>
 
             {/* About Me Section */}
-            <section className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-secondary/10 to-card/30">
-                {/* Subtle grid pattern overlay */}
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#27272a11_1px,transparent_1px),linear-gradient(to_bottom,#27272a11_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-10 z-0" />
+            <section className="py-32 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6 }}
                         className="max-w-4xl mx-auto"
                     >
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                                Welcome to My Digital Space
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                                Welcome to My <span className="text-gradient-premium">Digital Space</span>
                             </h2>
-                            <p className="text-muted-foreground text-lg">
-                                Where creativity meets functionality
+                            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                                Where creativity meets functionality to build the extraordinary.
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.1 }}
-                                className="bg-card border border-border/50 rounded-xl p-6 hover:border-electric/50 transition-all duration-300 group"
+                                whileHover={{ y: -5 }}
+                                className="glass p-8 rounded-2xl group"
                             >
-                                <div className="w-12 h-12 bg-electric/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-electric/20 transition-colors">
-                                    <Code2 className="w-6 h-6 text-electric" />
+                                <div className="w-14 h-14 bg-electric/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-electric/20 transition-colors border border-electric/20">
+                                    <Code2 className="w-7 h-7 text-electric" />
                                 </div>
-                                <h3 className="font-semibold text-foreground mb-2">Clean Code</h3>
-                                <p className="text-sm text-muted-foreground">
-                                    Writing maintainable, scalable solutions with modern best practices
+                                <h3 className="text-xl font-bold text-white mb-3">Clean Code</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    Architecting scalable solutions with modern standards and pristine logic.
                                 </p>
                             </motion.div>
 
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                                className="bg-card border border-border/50 rounded-xl p-6 hover:border-electric/50 transition-all duration-300 group"
+                                whileHover={{ y: -5 }}
+                                className="glass p-8 rounded-2xl group"
                             >
-                                <div className="w-12 h-12 bg-electric/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-electric/20 transition-colors">
-                                    <Sparkles className="w-6 h-6 text-electric" />
+                                <div className="w-14 h-14 bg-magenta/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-magenta/20 transition-colors border border-magenta/20">
+                                    <Sparkles className="w-7 h-7 text-magenta" />
                                 </div>
-                                <h3 className="font-semibold text-foreground mb-2">Design Focus</h3>
-                                <p className="text-sm text-muted-foreground">
-                                    Creating beautiful interfaces that users love to interact with
+                                <h3 className="text-xl font-bold text-white mb-3">Premium Design</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    Crafting interfaces that feel alive, responsive, and impossibly smooth.
                                 </p>
                             </motion.div>
 
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.3 }}
-                                className="bg-card border border-border/50 rounded-xl p-6 hover:border-electric/50 transition-all duration-300 group"
+                                whileHover={{ y: -5 }}
+                                className="glass p-8 rounded-2xl group"
                             >
-                                <div className="w-12 h-12 bg-electric/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-electric/20 transition-colors">
-                                    <Rocket className="w-6 h-6 text-electric" />
+                                <div className="w-14 h-14 bg-cyan/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan/20 transition-colors border border-cyan/20">
+                                    <Rocket className="w-7 h-7 text-cyan" />
                                 </div>
-                                <h3 className="font-semibold text-foreground mb-2">Fast Delivery</h3>
-                                <p className="text-sm text-muted-foreground">
-                                    Efficient development without compromising on quality
+                                <h3 className="text-xl font-bold text-white mb-3">High Performance</h3>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    Optimized for speed, SEO, and delivering visible results instantly.
                                 </p>
                             </motion.div>
                         </div>
 
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="bg-card border border-border/50 rounded-2xl p-8 md:p-10"
+                            className="relative overflow-hidden rounded-3xl border border-white/10"
                         >
-                            <div className="flex flex-col md:flex-row items-center gap-8">
-                                <div className="flex-1">
-                                    <h3 className="text-2xl font-bold text-foreground mb-4">
-                                        Let's Build Something Amazing Together
+                            <div className="absolute inset-0 bg-gradient-to-r from-electric/10 to-cyan/10 opacity-50" />
+                            <div className="glass-premium p-10 md:p-14 relative z-10 flex flex-col md:flex-row items-center gap-10">
+                                <div className="flex-1 text-center md:text-left">
+                                    <h3 className="text-3xl font-bold text-white mb-4">
+                                        Let's Build Something Amazing
                                     </h3>
-                                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                                        I'm a passionate full-stack developer specializing in Laravel and React. 
-                                        With a keen eye for design and a commitment to clean code, I transform ideas 
-                                        into engaging digital experiences. Whether you need a stunning portfolio, 
-                                        a robust web application, or something in between, I'm here to help bring 
-                                        your vision to life.
+                                    <p className="text-gray-300 mb-8 leading-relaxed text-lg">
+                                        I'm a passionate software development student who thrives on turning complex challenges into elegant solutions.
+                                        Currently pursuing my studies in software development, I'm eager to learn and grow while building impactful digital experiences.
                                     </p>
-                                    <Link
-                                        href="/about"
-                                        className="group inline-flex items-center gap-2 px-6 py-3 bg-electric text-white rounded-lg font-medium hover:bg-electric/90 transition-all duration-200 hover:shadow-lg hover:shadow-electric/20"
-                                    >
+                                    <Button href="/about" variant="primary">
                                         More About Me
-                                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                    </Link>
+                                    </Button>
                                 </div>
-                                <div className="hidden lg:block">
-                                    <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-electric/20 to-electric/5 border border-electric/20 flex items-center justify-center">
-                                        <Code2 className="w-24 h-24 text-electric/40" />
+                                <div className="hidden lg:block relative">
+                                    <div className="absolute inset-0 bg-electric blur-[80px] opacity-20" />
+                                    <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 flex items-center justify-center relative backdrop-blur-sm rotate-3 hover:rotate-6 transition-transform duration-500">
+                                        <Code2 className="w-24 h-24 text-white/20" />
                                     </div>
                                 </div>
                             </div>
@@ -192,148 +182,102 @@ export default function Home({ projects, testimonials, companies }) {
 
             {/* Featured Projects Section */}
             {projects && projects.length > 0 && (
-                <section className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-electric/5 to-secondary/10">
-                    {/* Subtle dot pattern overlay */}
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,#8b5cf633_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-10 z-0" />
+                <section className="py-32 relative overflow-hidden bg-black/20">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className="mb-16"
-                        >
-                            <div className="flex items-center justify-between mb-4">
-                                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                        <div className="flex items-end justify-between mb-16 px-2">
+                            <div>
+                                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                     Featured Projects
                                 </h2>
-                                <Link
-                                    href="/projects"
-                                    className="hidden sm:inline-flex items-center gap-2 text-electric hover:underline font-medium group"
-                                >
-                                    View all
-                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
+                                <p className="text-muted-foreground text-lg">
+                                    A selection of recent work and experiments
+                                </p>
                             </div>
-                            <p className="text-muted-foreground max-w-2xl">
-                                Some of my recent work and side projects
-                            </p>
-                        </motion.div>
+                            <Button href="/projects" variant="ghost" className="hidden sm:inline-flex">
+                                View All <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                        </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                             {projects.slice(0, 3).map((project, index) => (
-                                <ProjectCard 
-                                    key={project.id} 
-                                    project={project} 
+                                <ProjectCard
+                                    key={project.id}
+                                    project={project}
                                     index={index}
                                 />
                             ))}
                         </div>
 
                         <div className="text-center sm:hidden">
-                            <Link
-                                href="/projects"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-foreground rounded-lg font-medium hover:bg-secondary/80 transition-all duration-200 border border-border/50"
-                            >
+                            <Button href="/projects" variant="secondary" className="w-full">
                                 View All Projects
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
+                            </Button>
                         </div>
                     </div>
                 </section>
             )}
 
-            {/* Testimonials Preview */}
+            {/* Testimonials */}
             {testimonials && testimonials.length > 0 && (
-                <section className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-electric/5 to-secondary/10 border-t border-border/50">
-                    {/* Subtle diagonal lines overlay */}
-                    <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(135deg,#8b5cf622_0_2px,transparent_2px_40px)] opacity-10 z-0" />
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className="mb-16 flex flex-col sm:flex-row sm:items-center sm:justify-between text-center sm:text-left"
-                        >
-                            <div>
-                                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-0">
-                                    What Clients Say
-                                </h2>
-                                <p className="text-muted-foreground max-w-2xl mx-auto sm:mx-0">
-                                    Feedback from amazing people I've worked with
-                                </p>
-                            </div>
-                            {/* Desktop: purple link, Mobile: purple button */}
-                            <div className="mt-6 sm:mt-0">
-                                <Link
-                                    href="/testimonials"
-                                    className="hidden sm:inline-flex items-center gap-2 text-electric hover:underline font-medium group"
-                                >
-                                    View all
-                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                                <Link
-                                    href="/testimonials"
-                                    className="inline-flex sm:hidden items-center gap-2 px-6 py-3 bg-electric text-white rounded-lg font-medium hover:bg-electric/90 transition-all duration-200 hover:shadow-lg hover:shadow-electric/20 mt-2"
-                                >
-                                    View all
-                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                            </div>
-                        </motion.div>
+                <section className="py-32 relative overflow-hidden">
+                    {/* Background glow */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-electric/5 blur-[120px] rounded-full" />
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
-                            {testimonials.slice(0, 2).map((testimonial, index) => (
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                                Client Stories
+                            </h2>
+                            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                                Don't just take my word for it
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                            {testimonials.slice(0, 3).map((testimonial, index) => (
                                 <motion.div
                                     key={testimonial.id}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="bg-card border border-border/50 rounded-xl p-6 hover:border-border transition-colors"
+                                    className="glass p-8 rounded-2xl hover:bg-white/[0.04] transition-colors flex flex-col h-full"
                                 >
-                                    <div className="flex items-center mb-4">
-                                        {testimonial.avatar_url && (
-                                            <img 
+                                    <div className="flex items-center mb-6">
+                                        {testimonial.avatar_url ? (
+                                            <img
                                                 src={testimonial.avatar_url}
                                                 alt={testimonial.author_name}
-                                                className="w-12 h-12 rounded-full mr-4 border-2 border-border/50"
+                                                className="w-14 h-14 rounded-full mr-4 border-2 border-electric/30 p-0.5 object-cover"
                                             />
+                                        ) : (
+                                            <div className="w-14 h-14 rounded-full mr-4 border-2 border-electric/30 bg-muted flex items-center justify-center text-xl font-bold">
+                                                {testimonial.author_name.charAt(0)}
+                                            </div>
                                         )}
                                         <div>
-                                            <p className="font-semibold text-foreground">{testimonial.author_name}</p>
+                                            <p className="font-bold text-white text-lg">{testimonial.author_name}</p>
                                             {testimonial.company && (
-                                                <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                                                <p className="text-electric text-sm">{testimonial.company}</p>
                                             )}
                                         </div>
                                     </div>
-                                    <div className="flex mb-3">
+                                    <div className="flex mb-4">
                                         {[...Array(5)].map((_, i) => (
-                                            <svg
+                                            <Sparkles
                                                 key={i}
                                                 className={cn(
-                                                    'w-4 h-4',
-                                                    i < testimonial.rating ? 'text-electric' : 'text-muted/30'
+                                                    'w-4 h-4 mr-1',
+                                                    i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-700'
                                                 )}
-                                                fill="currentColor"
-                                                viewBox="0 0 20 20"
-                                            >
-                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                            </svg>
+                                            />
                                         ))}
                                     </div>
-                                    <p className="text-muted-foreground leading-relaxed">{testimonial.content}</p>
+                                    <p className="text-gray-300 leading-relaxed italic relative flex-grow">
+                                        "{testimonial.content}"
+                                    </p>
                                 </motion.div>
                             ))}
-                        </div>
-
-                        <div className="text-center">
-                            <Link
-                                href="/testimonials"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-foreground rounded-lg font-medium hover:bg-secondary/80 transition-all duration-200 border border-border/50"
-                            >
-                                View All Testimonials
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
                         </div>
                     </div>
                 </section>

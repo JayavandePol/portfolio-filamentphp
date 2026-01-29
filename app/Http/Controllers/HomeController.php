@@ -30,10 +30,13 @@ class HomeController extends Controller
             ->orderBy('name')
             ->get();
 
+        $projectsCount = Project::where('status', 'published')->count();
+
         return Inertia::render('Home', [
             'projects' => $projects,
             'testimonials' => $testimonials,
             'companies' => $companies,
+            'projectsCount' => $projectsCount,
         ]);
     }
 }

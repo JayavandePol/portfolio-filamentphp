@@ -8,11 +8,10 @@ import '../../css/ripple.css';
 
 const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
-    { name: 'Testimonials', href: '/testimonials' },
-    { name: 'Status', href: 'https://status.jayavandepol.nl' },
+    { name: 'Projects', href: '/projects' },
     { name: 'Contact', href: '/contact' },
+    { name: '☕ Support', href: 'https://buymeacoffee.com/jayavandepol' },
 ];
 
 export default function Navbar() {
@@ -32,8 +31,8 @@ export default function Navbar() {
         <nav
             className={cn(
                 'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-                scrolled 
-                    ? 'glass border-b border-border/50' 
+                scrolled
+                    ? 'glass border-b border-border/50'
                     : 'bg-transparent border-b border-transparent'
             )}
         >
@@ -51,7 +50,7 @@ export default function Navbar() {
                         {navigation.map((item) => {
                             const isActive = window.location.pathname === item.href;
                             const isExternal = item.href.startsWith('http');
-                            
+
                             if (isExternal) {
                                 return (
                                     <a
@@ -65,15 +64,15 @@ export default function Navbar() {
                                     </a>
                                 );
                             }
-                            
+
                             return (
                                 <Link
                                     key={item.name}
                                     href={item.href}
                                     className={cn(
                                         'relative px-4 py-2 text-sm font-medium rounded-md transition-all duration-200',
-                                        isActive 
-                                            ? 'text-foreground' 
+                                        isActive
+                                            ? 'text-foreground'
                                             : 'text-muted-foreground hover:text-foreground'
                                     )}
                                 >
@@ -88,7 +87,7 @@ export default function Navbar() {
                                 </Link>
                             );
                         })}
-                        
+
                         {/* Dashboard button for logged-in users */}
                         {auth?.user && (
                             <a
@@ -132,7 +131,7 @@ export default function Navbar() {
                             {navigation.map((item) => {
                                 const isActive = window.location.pathname === item.href;
                                 const isExternal = item.href.startsWith('http');
-                                
+
                                 if (isExternal) {
                                     return (
                                         <a
@@ -147,15 +146,15 @@ export default function Navbar() {
                                         </a>
                                     );
                                 }
-                                
+
                                 return (
                                     <Link
                                         key={item.name}
                                         href={item.href}
                                         className={cn(
                                             'block px-4 py-2 text-base font-medium rounded-md transition-colors',
-                                            isActive 
-                                                ? 'bg-secondary text-foreground' 
+                                            isActive
+                                                ? 'bg-secondary text-foreground'
                                                 : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
                                         )}
                                         onClick={() => setMobileMenuOpen(false)}
@@ -164,7 +163,7 @@ export default function Navbar() {
                                     </Link>
                                 );
                             })}
-                            
+
                             {/* Dashboard button for logged-in users (mobile) */}
                             {auth?.user && (
                                 <a

@@ -18,7 +18,7 @@ export default function About({ skills = [], experiences = [] }) {
     return (
         <AppLayout>
             <Head title="About" />
-            
+
             <div className="min-h-screen bg-background text-foreground">
                 {/* Hero Section */}
                 <section className="pt-32 pb-20">
@@ -34,21 +34,25 @@ export default function About({ skills = [], experiences = [] }) {
                             </h1>
                             <div className="prose prose-invert prose-lg max-w-none">
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    Hi, I'm Jaya van de Pol — a passionate full-stack developer with a love for creating elegant, 
-                                    performant web applications. I specialize in modern technologies like Laravel, React, and Vue.js, 
-                                    with a keen eye for design and user experience.
+                                    I'm a passionate software development student who thrives on turning complex challenges into elegant solutions.
+                                    Currently pursuing my studies in software development, I'm eager to learn and grow while building impactful digital experiences.
                                 </p>
                                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                                    With years of experience in web development, I've worked on diverse projects ranging from 
-                                    e-commerce platforms to enterprise applications. My approach combines technical excellence 
-                                    with creative problem-solving, ensuring that every project not only works flawlessly but 
-                                    also delivers an exceptional user experience.
+                                    Started as a curious student fascinated by technology, I quickly fell in love with the power of code to solve real-world problems.
+                                    Currently pursuing my software development studies, I'm constantly learning new technologies and building projects that challenge me to grow.
                                 </p>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
-                                    projects, or sharing knowledge with the developer community. I believe in continuous learning 
-                                    and staying at the forefront of web development trends.
+                                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                                    I believe in continuous learning and staying ahead of technology trends. Whether it's exploring the latest frameworks,
+                                    understanding new programming paradigms, or diving deep into best practices, I'm always eager to expand my knowledge and skills.
                                 </p>
+
+                                <h3 className="text-2xl font-bold text-white mb-4">What drives me:</h3>
+                                <ul className="list-disc pl-6 text-lg text-muted-foreground space-y-2">
+                                    <li>Learning new technologies and programming languages</li>
+                                    <li>Building projects that solve real-world problems</li>
+                                    <li>Collaborating with others and sharing knowledge</li>
+                                    <li>Contributing to open-source projects and the developer community</li>
+                                </ul>
                             </div>
                         </motion.div>
                     </div>
@@ -66,7 +70,7 @@ export default function About({ skills = [], experiences = [] }) {
                             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center font-['Poppins']">
                                 Skills & Technologies
                             </h2>
-                            
+
                             {skills.length > 0 ? (
                                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                                     {skills.map((skill, index) => (
@@ -80,7 +84,7 @@ export default function About({ skills = [], experiences = [] }) {
                                         >
                                             {/* Icon and Name */}
                                             <div className="flex flex-col items-center text-center space-y-3">
-                                                <div 
+                                                <div
                                                     className="w-12 h-12 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
                                                     style={{ backgroundColor: `${skill.color}20`, color: skill.color }}
                                                 >
@@ -90,7 +94,7 @@ export default function About({ skills = [], experiences = [] }) {
                                                     {skill.name}
                                                 </h3>
                                             </div>
-                                            
+
                                             {/* Proficiency Bar */}
                                             <div className="mt-4">
                                                 <div className="flex justify-between items-center mb-2">
@@ -132,13 +136,13 @@ export default function About({ skills = [], experiences = [] }) {
                             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
                                 Work Experience
                             </h2>
-                            
+
                             {experiences.length > 0 ? (
                                 <div className="max-w-4xl mx-auto">
                                     <div className="relative">
                                         {/* Timeline line */}
                                         <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border/50" />
-                                        
+
                                         <div className="space-y-12">
                                             {experiences.map((experience, index) => (
                                                 <motion.div
@@ -151,18 +155,18 @@ export default function About({ skills = [], experiences = [] }) {
                                                 >
                                                     {/* Timeline dot */}
                                                     <div className="absolute left-6 top-2 w-5 h-5 rounded-full bg-electric border-4 border-background" />
-                                                    
+
                                                     {/* Logo */}
                                                     {experience.logo_url && (
                                                         <div className="absolute left-0 top-0 w-16 h-16 rounded-xl bg-card border border-border/50 flex items-center justify-center overflow-hidden">
-                                                            <img 
-                                                                src={experience.logo_url} 
+                                                            <img
+                                                                src={experience.logo_url}
                                                                 alt={experience.company}
                                                                 className="w-12 h-12 object-contain"
                                                             />
                                                         </div>
                                                     )}
-                                                    
+
                                                     {/* Content */}
                                                     <div className="bg-card border border-border/50 rounded-xl p-6 hover:border-electric/50 transition-colors">
                                                         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
@@ -185,9 +189,9 @@ export default function About({ skills = [], experiences = [] }) {
                                                                 )}
                                                             </div>
                                                         </div>
-                                                        
+
                                                         {experience.description && (
-                                                            <div 
+                                                            <div
                                                                 className="prose prose-invert prose-sm max-w-none text-muted-foreground"
                                                                 dangerouslySetInnerHTML={{ __html: experience.description }}
                                                             />

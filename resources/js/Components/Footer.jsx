@@ -6,7 +6,6 @@ const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
-    { name: 'Testimonials', href: '/testimonials' },
     { name: 'Contact', href: '/contact' },
 ];
 
@@ -31,22 +30,21 @@ export default function Footer({ socialLinks = [] }) {
                                 </span>
                             </Link>
                             <p className="text-muted-foreground text-sm leading-relaxed max-w-md mb-4">
-                                Full-stack developer crafting beautiful, functional web experiences. 
-                                Specializing in Laravel, React, and modern web technologies.
+                                Software development student crafting exceptional digital experiences.
                             </p>
-                            <a 
-                                href="mailto:jayavandepol@hotmail.com"
+                            <a
+                                href="mailto:info@jayavandepol.nl"
                                 className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-electric transition-colors"
                             >
                                 <Mail className="w-4 h-4" />
-                                <span>jayavandepol@hotmail.com</span>
+                                <span>info@jayavandepol.nl</span>
                             </a>
                         </div>
 
-                        {/* Quick Links */}
+                        {/* Quick Links & Support */}
                         <div>
                             <h3 className="font-semibold text-foreground mb-4 text-sm">Quick Links</h3>
-                            <ul className="space-y-2.5">
+                            <ul className="space-y-2.5 mb-6">
                                 {navigation.map((item) => (
                                     <li key={item.name}>
                                         <Link
@@ -58,6 +56,17 @@ export default function Footer({ socialLinks = [] }) {
                                     </li>
                                 ))}
                             </ul>
+
+                            <h3 className="font-semibold text-foreground mb-4 text-sm">Support</h3>
+                            <a
+                                href="https://buymeacoffee.com/jayavandepol"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-yellow-400 transition-colors"
+                            >
+                                <span className="text-xl">☕</span>
+                                <span>Buy Me a Coffee</span>
+                            </a>
                         </div>
 
                         {/* Social Links */}
