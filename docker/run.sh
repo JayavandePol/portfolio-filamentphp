@@ -2,6 +2,10 @@
 
 cd /var/www/html
 
+# Fix storage permissions (runtime volume fix)
+chown -R www-data:www-data /var/www/html/storage
+chmod -R 775 /var/www/html/storage
+
 # Run migrations
 echo "Running migrations..."
 php artisan migrate --force
