@@ -10,6 +10,14 @@ use Inertia\Inertia;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Register custom Filament response singletons.
+     */
+    public $singletons = [
+        \Filament\Http\Responses\Auth\Contracts\LoginResponse::class => \App\Http\Responses\CustomLoginResponse::class,
+        \Filament\Http\Responses\Auth\Contracts\LogoutResponse::class => \App\Http\Responses\CustomLogoutResponse::class,
+    ];
+
+    /**
      * Register any application services.
      */
     public function register(): void
@@ -24,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Share social links with all Inertia views
         Inertia::share([
-            'socialLinks' => fn () => SocialLink::where('is_visible', true)
+            'socialLinks' => fn() => SocialLink::where('is_visible', true)
                 ->orderBy('sort_order')
                 ->orderBy('platform')
                 ->get(['id', 'platform', 'url', 'icon']),

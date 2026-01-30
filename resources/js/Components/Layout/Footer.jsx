@@ -7,12 +7,32 @@ const navigation = [
     { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Status', href: 'https://status.jayavandepol.nl' },
 ];
 
 export default function Footer({ socialLinks = [] }) {
     const getIcon = (iconName) => {
         if (!iconName) return null;
-        const Icon = LucideIcons[iconName];
+
+        let Icon = LucideIcons[iconName];
+
+        if (!Icon) {
+            const pascalName = iconName.charAt(0).toUpperCase() + iconName.slice(1);
+            Icon = LucideIcons[pascalName];
+        }
+
+        if (!Icon) {
+            const commonIcons = {
+                'github': LucideIcons.Github,
+                'linkedin': LucideIcons.Linkedin,
+                'twitter': LucideIcons.Twitter,
+                'instagram': LucideIcons.Instagram,
+                'facebook': LucideIcons.Facebook,
+                'youtube': LucideIcons.Youtube,
+            };
+            Icon = commonIcons[iconName.toLowerCase()];
+        }
+
         return Icon ? <Icon className="w-5 h-5" /> : null;
     };
 

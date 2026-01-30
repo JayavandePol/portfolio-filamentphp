@@ -1,16 +1,17 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, LayoutDashboard } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { Menu, X, LayoutDashboard, LogIn, UserPlus } from 'lucide-react';
+import { cn } from '../../lib/utils';
 import '@fontsource/poppins/700.css';
-import '../../css/ripple.css';
+import '../../../css/ripple.css';
 
 const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Projects', href: '/projects' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Status', href: 'https://status.jayavandepol.nl' },
     { name: '☕ Support', href: 'https://buymeacoffee.com/jayavandepol' },
 ];
 
@@ -88,15 +89,32 @@ export default function Navbar() {
                             );
                         })}
 
-                        {/* Dashboard button for logged-in users */}
-                        {auth?.user && (
+                        {/* Auth buttons */}
+                        {auth?.user ? (
                             <a
-                                href="/admin"
+                                href={auth.user.email === 'jayavandepol@hotmail.com' ? '/admin' : '/dashboard'}
                                 className="ml-2 inline-flex items-center gap-2 px-4 py-2 bg-electric/10 text-electric rounded-md text-sm font-medium hover:bg-electric/20 transition-colors border border-electric/20"
                             >
                                 <LayoutDashboard className="h-4 w-4" />
                                 Dashboard
                             </a>
+                        ) : (
+                            <div className="ml-2 flex items-center gap-2">
+                                <a
+                                    href="/dashboard/login"
+                                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                >
+                                    <LogIn className="h-4 w-4" />
+                                    Login
+                                </a>
+                                <a
+                                    href="/dashboard/register"
+                                    className="inline-flex items-center gap-2 px-4 py-2 bg-electric text-white rounded-md text-sm font-medium hover:bg-electric/90 transition-colors"
+                                >
+                                    <UserPlus className="h-4 w-4" />
+                                    Sign Up
+                                </a>
+                            </div>
                         )}
                     </div>
 
@@ -164,16 +182,35 @@ export default function Navbar() {
                                 );
                             })}
 
-                            {/* Dashboard button for logged-in users (mobile) */}
-                            {auth?.user && (
+                            {/* Auth buttons (mobile) */}
+                            {auth?.user ? (
                                 <a
-                                    href="/admin"
+                                    href={auth.user.email === 'jayavandepol@hotmail.com' ? '/admin' : '/dashboard'}
                                     className="flex items-center gap-2 px-4 py-2 bg-electric/10 text-electric rounded-md text-base font-medium hover:bg-electric/20 transition-colors border border-electric/20"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     <LayoutDashboard className="h-4 w-4" />
                                     Dashboard
                                 </a>
+                            ) : (
+                                <div className="space-y-2 mt-2">
+                                    <a
+                                        href="/dashboard/login"
+                                        className="flex items-center gap-2 px-4 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-md transition-colors"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        <LogIn className="h-4 w-4" />
+                                        Login
+                                    </a>
+                                    <a
+                                        href="/dashboard/register"
+                                        className="flex items-center gap-2 px-4 py-2 bg-electric text-white rounded-md text-base font-medium hover:bg-electric/90 transition-colors"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        <UserPlus className="h-4 w-4" />
+                                        Sign Up
+                                    </a>
+                                </div>
                             )}
                         </div>
                     </motion.div>

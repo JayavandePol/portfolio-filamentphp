@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 export default function Card({ children, className = '', animate = true, delay = 0 }) {
     const cardVariants = {

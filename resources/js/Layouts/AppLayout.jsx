@@ -1,7 +1,5 @@
 import { usePage } from '@inertiajs/react';
-import FlashMessages from '../Components/FlashMessages';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+import { FlashMessages, Navbar, Footer } from '../Components';
 import { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
 

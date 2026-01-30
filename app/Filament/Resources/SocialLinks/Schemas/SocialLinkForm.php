@@ -29,7 +29,7 @@ class SocialLinkForm
                             'Other' => 'Other',
                         ])
                         ->searchable(),
-                    
+
                     TextInput::make('url')
                         ->required()
                         ->url()
@@ -38,15 +38,17 @@ class SocialLinkForm
                 ]),
 
                 Grid::make(3)->schema([
-                    TextInput::make('icon')
-                        ->label('Icon Name')
-                        ->helperText('Lucide icon name (e.g., "github", "linkedin")')
-                        ->maxLength(255),
-                    
+                    \Filament\Forms\Components\Select::make('icon')
+                        ->label('Icon')
+                        ->options(\App\Support\LucideIcons::all())
+                        ->searchable()
+                        ->placeholder('Search for an icon...')
+                        ->helperText('Select a Lucide icon for this platform'),
+
                     TextInput::make('sort_order')
                         ->numeric()
                         ->default(0),
-                    
+
                     Toggle::make('is_visible')
                         ->default(true)
                         ->inline(false),

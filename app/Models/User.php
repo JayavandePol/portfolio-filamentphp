@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Illuminate\Database\Eloquent\Prunable;
+use Illuminate\Database\Eloquent\Builder;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, Notifiable, TwoFactorAuthenticatable, Prunable;
 
     /**
      * The attributes that are mass assignable.
@@ -50,6 +52,17 @@ class User extends Authenticatable implements FilamentUser
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the prunable model query.
+     * Verwijdert gebruikers die zich registreerden maar niet binnen 1 uur verifieerden.
+     */
+    public function prunable(): Builder
+    {
+        return self::where('email_verified_at', null)
+            ->where('created_at', '<=', now()->subHour());
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         // For the Admin Panel (id: 'admin')
@@ -58,10 +71,8 @@ class User extends Authenticatable implements FilamentUser
             return $this->email === 'jayavandepol@hotmail.com';
         }
 
-        // For the User Dashboard (id: 'app')
+        // For the User Dashboard (id: 'dashboard')
         if ($panel->getId() === 'dashboard') {
-            // ONLY verified users can access (optional safety check)
-            // return ! is_null($this->email_verified_at);
             return true;
         }
 

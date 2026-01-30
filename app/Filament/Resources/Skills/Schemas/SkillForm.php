@@ -18,18 +18,20 @@ class SkillForm
                     TextInput::make('name')
                         ->required()
                         ->maxLength(255),
-                    
-                    TextInput::make('icon')
-                        ->label('Icon Name')
-                        ->helperText('Lucide icon name (e.g., "code", "database")')
-                        ->maxLength(255),
+
+                    \Filament\Forms\Components\Select::make('icon')
+                        ->label('Icon')
+                        ->options(\App\Support\LucideIcons::all())
+                        ->searchable()
+                        ->placeholder('Search for an icon...')
+                        ->helperText('Select a Lucide icon for this skill'),
                 ]),
 
                 Grid::make(2)->schema([
                     ColorPicker::make('color')
                         ->required()
                         ->default('#8b5cf6'),
-                    
+
                     TextInput::make('proficiency')
                         ->required()
                         ->numeric()
@@ -45,7 +47,7 @@ class SkillForm
                         ->numeric()
                         ->default(0)
                         ->helperText('Lower numbers appear first'),
-                    
+
                     Toggle::make('is_visible')
                         ->default(true)
                         ->inline(false),

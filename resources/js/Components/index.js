@@ -1,6 +1,10 @@
-export { default as Container } from './Container';
-export { default as Card } from './Card';
-export { default as Button } from './Button';
-export { default as Badge } from './Badge';
-export { default as Section } from './Section';
-export { default as RichText } from './RichText';
+// Basic Components
+export * from './UI';
+export * from './Layout';
+export * from './Shared';
+
+// Page Components (Namespaced)
+export * as HomeComponents from './Home';
+export * as AboutComponents from './About';
+export * as ContactComponents from './Contact';
+export * as ProjectsComponents from './Projects';

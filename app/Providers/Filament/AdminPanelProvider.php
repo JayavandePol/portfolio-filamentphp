@@ -7,6 +7,7 @@ use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -20,19 +21,24 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use daacreators\CreatorsTicketing\TicketingPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
             ->id('admin')
             ->path('admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
-            ->login()
             ->colors([
                 'primary' => Color::Amber,
+            ])
+            ->navigationItems([
+                NavigationItem::make('Back to Home')
+                    ->url('/', shouldOpenInNewTab: false)
+                    ->icon('heroicon-o-home')
+                    ->sort(-1),
             ])
             ->userMenuItems([
                 'homepage' => MenuItem::make()
@@ -48,7 +54,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
+                \daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -62,22 +68,23 @@ class AdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
-                Authenticate::class,
+                \App\Http\Middleware\AuthenticateAdmin::class,
             ])
             ->plugins([
                 BreezyCore::make()
-                ->myProfile(
-                    shouldRegisterUserMenu: true, // Sets    the 'account' link in the panel User Menu (default = true)
-                    userMenuLabel: 'My Profile', // Customizes the 'account' link label in the panel User Menu (default = null)
-                    shouldRegisterNavigation: false, // Adds a main navigation item for the My Profile page (default = false)
-                    navigationGroup: 'Settings', // Sets the navigation group for the My Profile page (default = null)
-                    hasAvatars: true, // Enables the avatar upload form component (default = false)
-                    slug: 'profile' // Sets the slug for the profile page (default = 'my-profile')
-                )
-                ->enableTwoFactorAuthentication(
-                    force: false, // force the user to enable 2FA before they can use the application (default = false)
-                    scopeToPanel: true, // scope the 2FA only to the current panel (default = true) 
-                )
+                    ->myProfile(
+                        shouldRegisterUserMenu: true, // Sets    the 'account' link in the panel User Menu (default = true)
+                        userMenuLabel: 'My Profile', // Customizes the 'account' link label in the panel User Menu (default = null)
+                        shouldRegisterNavigation: true, // Adds a main navigation item for the My Profile page (default = false)
+                        navigationGroup: 'Settings', // Sets the navigation group for the My Profile page (default = null)
+                        hasAvatars: true, // Enables the avatar upload form component (default = false)
+                        slug: 'profile' // Sets the slug for the profile page (default = 'my-profile')
+                    )
+                    ->enableTwoFactorAuthentication(
+                        force: false, // force the user to enable 2FA before they can use the application (default = false)
+                        scopeToPanel: true, // scope the 2FA only to the current panel (default = true) 
+                    ),
+                TicketingPlugin::make(),
             ]);
     }
 }

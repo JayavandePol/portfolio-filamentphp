@@ -2,8 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import AppLayout from '../Layouts/AppLayout';
-import Badge from '../Components/Badge';
-import RichText from '../Components/RichText';
+import { Badge, RichText } from '../Components';
 
 export default function ProjectDetail({ project }) {
     const getStatusVariant = (status) => {

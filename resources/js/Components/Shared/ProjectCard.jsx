@@ -2,8 +2,8 @@ import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@inertiajs/react';
 import { ArrowUpRight } from 'lucide-react';
-import { cn } from '../lib/utils';
-import Badge from './Badge';
+import { cn } from '../../lib/utils';
+import { Badge } from '../UI';
 
 export default function ProjectCard({ project, index = 0 }) {
     const cardRef = useRef(null);
@@ -16,7 +16,7 @@ export default function ProjectCard({ project, index = 0 }) {
             const rect = card.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * 100;
             const y = ((e.clientY - rect.top) / rect.height) * 100;
-            
+
             card.style.setProperty('--mouse-x', `${x}%`);
             card.style.setProperty('--mouse-y', `${y}%`);
         };
@@ -55,7 +55,7 @@ export default function ProjectCard({ project, index = 0 }) {
                         <Badge variant={project.status === 'completed' ? 'success' : 'warning'}>
                             {project.status}
                         </Badge>
-                        
+
                         {project.url && (
                             <a
                                 href={project.url}

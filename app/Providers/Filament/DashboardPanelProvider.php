@@ -18,6 +18,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Filament\Navigation\NavigationItem;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -26,11 +28,19 @@ class DashboardPanelProvider extends PanelProvider
         return $panel
             ->id('dashboard') // Important: This ID identifies the panel
             ->path('dashboard') // This makes the URL /dashboard
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->login() // This enables /dashboard/login
             ->registration() // Optional: Allow users to register here
+            ->emailVerification() // Enable email verification
             ->default() // <--- OPTIONAL: Makes this the "main" panel
             ->colors([
                 'primary' => Color::Amber,
+            ])
+            ->navigationItems([
+                NavigationItem::make('Back to Home')
+                    ->url('/', shouldOpenInNewTab: false)
+                    ->icon('heroicon-o-home')
+                    ->sort(-1),
             ])
             ->discoverResources(in: app_path('Filament/Dashboard/Resources'), for: 'App\Filament\Dashboard\Resources')
             ->discoverPages(in: app_path('Filament/Dashboard/Pages'), for: 'App\Filament\Dashboard\Pages')
@@ -40,7 +50,6 @@ class DashboardPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Dashboard/Widgets'), for: 'App\Filament\Dashboard\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -54,7 +63,22 @@ class DashboardPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
+                \App\Http\Middleware\RedirectAdminToDashboard::class,
                 Authenticate::class,
+            ])
+            ->plugins([
+                BreezyCore::make()
+                    ->myProfile(
+                        shouldRegisterUserMenu: true,
+                        shouldRegisterNavigation: true,
+                        navigationGroup: 'Settings',
+                        hasAvatars: false,
+                        slug: 'profile'
+                    )
+                    ->enableTwoFactorAuthentication(
+                        force: false, // force the user to enable 2FA before they can use the application (default = false)
+                        scopeToPanel: true, // scope the 2FA only to the current panel (default = true) 
+                    ),
             ]);
     }
 }
