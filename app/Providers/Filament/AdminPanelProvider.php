@@ -54,7 +54,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                \daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget::class,
+                // \daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
