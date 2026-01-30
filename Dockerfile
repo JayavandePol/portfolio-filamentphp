@@ -29,12 +29,35 @@ RUN docker-php-ext-configure intl \
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Set working directory
+WORKDIR /var/www/html
+
+# --- BUILD STEP 1: Dependencies ---
+# Copy composer files first to leverage cache
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+
+# Copy node files
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# --- BUILD STEP 2: Application Code ---
+# Copy the rest of the application
+COPY . .
+
+# Build assets
+RUN npm run build
+
+# Run composer post-autoload-dump (important for discovery)
+RUN composer dump-autoload --optimize
+
+# Permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 storage bootstrap/cache
+
 # Copy startup script
 COPY docker/run.sh /usr/local/bin/start-container
 RUN sed -i 's/\r$//' /usr/local/bin/start-container && chmod +x /usr/local/bin/start-container
-
-# Set working directory
-WORKDIR /var/www/html
 
 # Expose port
 EXPOSE 9000
