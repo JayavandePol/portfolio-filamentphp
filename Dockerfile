@@ -1,4 +1,4 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 # Install system dependencies
 RUN apk add --no-cache \
@@ -17,7 +17,6 @@ RUN apk add --no-cache \
 # Install PHP extensions
 RUN docker-php-ext-configure intl \
     && docker-php-ext-install \
-    pd_pgsql \
     pgsql \
     pdo \
     pdo_pgsql \
