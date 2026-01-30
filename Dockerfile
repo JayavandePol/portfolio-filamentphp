@@ -48,12 +48,16 @@ COPY . .
 # Build assets
 RUN npm run build
 
+# Permissions and Directory Creation (MUST be before artisan commands)
+RUN mkdir -p storage/framework/sessions \
+    storage/framework/views \
+    storage/framework/cache \
+    bootstrap/cache \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 storage bootstrap/cache
+
 # Run composer post-autoload-dump (important for discovery)
 RUN composer dump-autoload --optimize
-
-# Permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 storage bootstrap/cache
 
 # Copy startup script
 COPY docker/run.sh /usr/local/bin/start-container
