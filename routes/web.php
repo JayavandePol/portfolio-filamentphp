@@ -15,6 +15,24 @@ Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
+Route::get('/login', function () {
+    return redirect()->route('filament.dashboard.auth.login');
+})->name('login');
+
+Route::get('/password/reset/{token}', function ($token) {
+    return redirect()->route('filament.dashboard.auth.password-reset.reset', [
+        'token' => $token,
+        'email' => request()->query('email'),
+    ]);
+})->name('password.reset');
+
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/dashboard');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
 // 404 Fallback
 Route::fallback(function () {
     return Inertia::render('NotFound');

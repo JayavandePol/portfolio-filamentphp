@@ -12,18 +12,29 @@ class UserForm
     {
         return $schema
             ->components([
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('email')
-                    ->label('Email address')
-                    ->email()
-                    ->required(),
-                DateTimePicker::make('email_verified_at'),
-                TextInput::make('password')
-                    ->password()
-                    ->required(),
-                TextInput::make('avatar_url')
-                    ->url(),
+                \Filament\Forms\Components\Section::make('User Details')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('email')
+                            ->label('Email address')
+                            ->email()
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
+                        DateTimePicker::make('email_verified_at'),
+                        TextInput::make('password')
+                            ->password()
+                            ->revealable()
+                            ->dehydrated(fn($state) => filled($state))
+                            ->required(fn($operation) => $operation === 'create'),
+                        TextInput::make('avatar_url')
+                            ->label('Avatar URL')
+                            ->url()
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 }

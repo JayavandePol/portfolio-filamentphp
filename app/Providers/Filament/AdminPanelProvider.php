@@ -23,6 +23,8 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use daacreators\CreatorsTicketing\TicketingPlugin;
 
+use App\Models\Setting;
+
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -31,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
+            ->favicon(fn () => Setting::get('site_favicon') ? \Illuminate\Support\Facades\Storage::url(Setting::get('site_favicon')) : null)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -54,7 +57,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                // \daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget::class,
+                \daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

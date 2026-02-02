@@ -21,6 +21,8 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Filament\Navigation\NavigationItem;
 
+use App\Models\Setting;
+
 class DashboardPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -31,8 +33,10 @@ class DashboardPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login() // This enables /dashboard/login
             ->registration() // Optional: Allow users to register here
+            ->passwordReset()
             ->emailVerification() // Enable email verification
             ->default() // <--- OPTIONAL: Makes this the "main" panel
+            ->favicon(fn () => Setting::get('site_favicon') ? \Illuminate\Support\Facades\Storage::url(Setting::get('site_favicon')) : null)
             ->colors([
                 'primary' => Color::Amber,
             ])

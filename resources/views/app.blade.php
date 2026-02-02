@@ -12,6 +12,13 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.jsx'])
         @inertiaHead
+        
+        @php
+            $favicon = \App\Models\Setting::get('site_favicon');
+        @endphp
+        @if($favicon)
+            <link rel="icon" href="{{ \Illuminate\Support\Facades\Storage::url($favicon) }}">
+        @endif
     </head>
     <body class="antialiased">
         @inertia
