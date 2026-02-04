@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'discord' => [
+        'ticket_webhook_url' => env('TICKET_WEBHOOK_URL'),
+        'auth_webhook_url' => env('AUTH_WEBHOOK_URL'),
+    ],
+
 ];

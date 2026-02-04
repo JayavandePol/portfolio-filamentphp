@@ -25,12 +25,24 @@ class EventServiceProvider extends ServiceProvider
         ],
         TicketCreated::class => [
             SendTicketCreatedNotification::class,
+            \App\Listeners\LogTicketToDiscord::class,
         ],
         TicketStatusChanged::class => [
             SendTicketStatusChangedNotification::class,
+            \App\Listeners\LogTicketToDiscord::class,
         ],
         TicketReplyAdded::class => [
             SendTicketReplyNotification::class,
+            \App\Listeners\LogTicketToDiscord::class,
+        ],
+        \Illuminate\Auth\Events\Login::class => [
+            \App\Listeners\LogAuthToDiscord::class,
+        ],
+        \Illuminate\Auth\Events\Logout::class => [
+            \App\Listeners\LogAuthToDiscord::class,
+        ],
+        \Illuminate\Auth\Events\Failed::class => [
+            \App\Listeners\LogAuthToDiscord::class,
         ],
     ];
 

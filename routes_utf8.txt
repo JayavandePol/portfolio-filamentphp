@@ -1,0 +1,84 @@
+﻿
+  GET|HEAD   / homeΓÇª
+  GET|HEAD   about ΓÇª
+  GET|HEAD   admin ΓÇª
+  GET|HEAD   admin/automation-rules filament.admin.resources.automation-rules.index ΓÇ║ daacreators\CreatorsTicketing ΓÇ║ LiΓÇª
+  GET|HEAD   admin/automation-rules/create filament.admin.resources.automation-rules.create ΓÇ║ daacreators\CreatorsTicketinΓÇª
+  GET|HEAD   admin/automation-rules/{record}/edit filament.admin.resources.automation-rules.edit ΓÇ║ daacreators\CreatorΓÇª
+  GET|HEAD   admin/categories filament.admin.resources.categories.index ΓÇ║ App\Filament\Resources\Categories\Pages\LisΓÇª
+  GET|HEAD   admin/categories/create filament.admin.resources.categories.create ΓÇ║ App\Filament\Resources\Categories\PaΓÇª
+  GET|HEAD   admin/categories/{record}/edit filament.admin.resources.categories.edit ΓÇ║ App\Filament\Resources\CateΓÇª
+  GET|HEAD   admin/companies filament.admin.resources.companies.index ΓÇ║ App\Filament\Resources\Companies\Pages\LisΓÇª
+  GET|HEAD   admin/companies/create filament.admin.resources.companies.create ΓÇ║ App\Filament\Resources\Companies\PaΓÇª
+  GET|HEAD   admin/companies/{record}/edit filament.admin.resources.companies.edit ΓÇ║ App\Filament\Resources\ComΓÇª
+  GET|HEAD   admin/departments filament.admin.resources.departments.index ΓÇ║ daacreators\CreatorsTicketing ΓÇ║ LisΓÇª
+  GET|HEAD   admin/departments/create filament.admin.resources.departments.create ΓÇ║ daacreators\CreatorsTicketingΓÇª
+  GET|HEAD   admin/departments/{record}/edit filament.admin.resources.departments.edit ΓÇ║ daacreators\CreatorsΓÇª
+  GET|HEAD   admin/forms filament.admin.resources.forms.index ΓÇ║ daacreators\CreatorsTicketing ΓÇ║ LisΓÇª
+  GET|HEAD   admin/forms/create filament.admin.resources.forms.create ΓÇ║ daacreators\CreatorsTicketingΓÇª
+  GET|HEAD   admin/forms/{record}/edit filament.admin.resources.forms.edit ΓÇ║ daacreators\CreatorsΓÇª
+  POST       admin/logout filament.admin.auth.logout ΓÇ║ Filament\Auth ΓÇ║ LogoutConΓÇª
+  GET|HEAD   admin/manage-settings filament.admin.pages.manage-settings ΓÇ║ App\Filament\PageΓÇª
+  GET|HEAD   admin/profile filament.admin.pages.profile ΓÇ║ Jeffgreco13\FilamentBreezy ΓÇ║ MyProΓÇª
+  GET|HEAD   admin/projects filament.admin.resources.projects.index ΓÇ║ App\Filament\Resources\Projects\Pages\LisΓÇª
+  GET|HEAD   admin/projects/create filament.admin.resources.projects.create ΓÇ║ App\Filament\Resources\Projects\PagΓÇª
+  GET|HEAD   admin/projects/{record}/edit filament.admin.resources.projects.edit ΓÇ║ App\Filament\Resources\ProΓÇª
+  GET|HEAD   admin/skills filament.admin.resources.skills.index ΓÇ║ App\Filament\Resources\Skills\Pages\LisΓÇª
+  GET|HEAD   admin/skills/create filament.admin.resources.skills.create ΓÇ║ App\Filament\Resources\Skills\PagΓÇª
+  GET|HEAD   admin/skills/{record}/edit filament.admin.resources.skills.edit ΓÇ║ App\Filament\Resources\SΓÇª
+  GET|HEAD   admin/social-links filament.admin.resources.social-links.index ΓÇ║ App\Filament\Resources\SocialLinks\Pages\LiΓÇª
+  GET|HEAD   admin/social-links/create filament.admin.resources.social-links.create ΓÇ║ App\Filament\Resources\SocialLinks\PaΓÇª
+  GET|HEAD   admin/social-links/{record}/edit filament.admin.resources.social-links.edit ΓÇ║ App\Filament\Resources\SociaΓÇª
+  GET|HEAD   admin/spam-filters filament.admin.resources.spam-filters.index ΓÇ║ daacreators\CreatorsTicketing ΓÇ║ LiΓÇª
+  GET|HEAD   admin/spam-filters/create filament.admin.resources.spam-filters.create ΓÇ║ daacreators\CreatorsTicketinΓÇª
+  GET|HEAD   admin/spam-filters/{record}/edit filament.admin.resources.spam-filters.edit ΓÇ║ daacreators\CreatorΓÇª
+  GET|HEAD   admin/spam-logs filament.admin.resources.spam-logs.index ΓÇ║ daacreators\CreatorsTicketing ΓÇ║ LiΓÇª
+  GET|HEAD   admin/spam-logs/{record} filament.admin.resources.spam-logs.view ΓÇ║ daacreators\CreatorsTickΓÇª
+  GET|HEAD   admin/testimonials filament.admin.resources.testimonials.index ΓÇ║ App\Filament\Resources\Testimonials\Pages\LisΓÇª
+  GET|HEAD   admin/testimonials/create filament.admin.resources.testimonials.create ΓÇ║ App\Filament\Resources\Testimonials\PagΓÇª
+  GET|HEAD   admin/testimonials/{record} filament.admin.resources.testimonials.view ΓÇ║ App\Filament\Resources\TestimonialsΓÇª
+  GET|HEAD   admin/testimonials/{record}/edit filament.admin.resources.testimonials.edit ΓÇ║ App\Filament\Resources\TestimoΓÇª
+  GET|HEAD   admin/ticket-statuses filament.admin.resources.ticket-statuses.index ΓÇ║ daacreators\CreatorsTicketing ΓÇ║ LiΓÇª
+  GET|HEAD   admin/ticket-statuses/create filament.admin.resources.ticket-statuses.create ΓÇ║ daacreators\CreatorsTicketiΓÇª
+  GET|HEAD   admin/ticket-statuses/{record}/edit filament.admin.resources.ticket-statuses.edit ΓÇ║ daacreators\CreatoΓÇª
+  GET|HEAD   admin/tickets filament.admin.resources.tickets.index ΓÇ║ daacreators\CreatorsTicketing ΓÇ║ LisΓÇª
+  GET|HEAD   admin/tickets/create filament.admin.resources.tickets.create ΓÇ║ daacreators\CreatorsTicketingΓÇª
+  GET|HEAD   admin/tickets/{record} filament.admin.resources.tickets.view ΓÇ║ daacreators\CreatorsTickeΓÇª
+  GET|HEAD   admin/two-factor-authentication filament.admin.auth.two-factor ΓÇ║ Jeffgreco13\FilaΓÇª
+  GET|HEAD   admin/users filament.admin.resources.users.index ΓÇ║ App\Filament\Resources\Users\Pages\LisΓÇª
+  GET|HEAD   admin/users/create filament.admin.resources.users.create ΓÇ║ App\Filament\Resources\Users\PagΓÇª
+  GET|HEAD   admin/users/{record}/edit filament.admin.resources.users.edit ΓÇ║ App\Filament\Resources\ΓÇª
+  GET|HEAD   admin/work-experiences filament.admin.resources.work-experiences.index ΓÇ║ App\Filament\Resources\WorkExperiences\Pages\LiΓÇª
+  GET|HEAD   admin/work-experiences/create filament.admin.resources.work-experiences.create ΓÇ║ App\Filament\Resources\WorkExperiences\PaΓÇª
+  GET|HEAD   admin/work-experiences/{record}/edit filament.admin.resources.work-experiences.edit ΓÇ║ App\Filament\Resources\WorkExperΓÇª
+  GET|HEAD   contact contact ΓÇ║ ContactController@indΓÇª
+  GET|HEAD   dashboard filament.dashboard.pages.dashboard ΓÇ║ Filament\Pages ΓÇ║ DashbΓÇª
+  GET|HEAD   dashboard/email-verification/prompt filament.dashboard.auth.email-verification.prompt ΓÇ║ Filament\ΓÇª
+  GET|HEAD   dashboard/email-verification/verify/{id}/{hash} filament.dashboard.auth.email-verification.verify ΓÇ║ FΓÇª
+  GET|HEAD   dashboard/login filament.dashboard.auth.login ΓÇ║ Filament\AuΓÇª
+  POST       dashboard/logout filament.dashboard.auth.logout ΓÇ║ Filament\Auth ΓÇ║ LogouΓÇª
+  GET|HEAD   dashboard/my-tickets filament.dashboard.pages.my-tickets ΓÇ║ App\Filament\Dashboard\ΓÇª
+  GET|HEAD   dashboard/password-reset/request filament.dashboard.auth.password-reset.request ΓÇ║ Filament\ΓÇª
+  GET|HEAD   dashboard/password-reset/reset filament.dashboard.auth.password-reset.reset ΓÇ║ FilaΓÇª
+  GET|HEAD   dashboard/profile filament.dashboard.pages.profile ΓÇ║ Jeffgreco13\FilamentBreezy ΓÇ║ MΓÇª
+  GET|HEAD   dashboard/register filament.dashboard.auth.register ΓÇ║ Filament\AuΓÇª
+  GET|HEAD   dashboard/two-factor-authentication filament.dashboard.auth.two-factor ΓÇ║ Jeffgreco13\ΓÇª
+  GET|HEAD   email/verify/{id}/{hash} ΓÇª
+  GET|HEAD   filament/exports/{export}/download filament.exports.download ΓÇ║ FilaΓÇª
+  GET|HEAD   filament/imports/{import}/failed-rows/download filament.imports.failed-rows.download ΓÇ║ FiΓÇª
+  GET|HEAD   livewire/livewire.js Livewire\Mechanisms ΓÇ║ FrontendAssets@returnJΓÇª
+  GET|HEAD   livewire/livewire.min.js.map Livewire\MechanismΓÇª
+  GET|HEAD   livewire/preview-file/{filename} livewire.preview-file ΓÇ║ Livewire\Features ΓÇ║ FΓÇª
+  POST       livewire/update default.livewire.update ΓÇ║ Livewire\Mechanisms ΓÇ║ HandleRequests@haΓÇª
+  POST       livewire/upload-file livewire.upload-file ΓÇ║ Livewire\Features ΓÇ║ FileUploadCoΓÇª
+  GET|HEAD   login ΓÇª
+  GET|HEAD   password/reset/{token} ΓÇª
+  GET|HEAD   private/ticket-attachments/{ticketId}/{filename} creators-ticketing.attachment ΓÇ║ daacreators\CreatorsΓÇª
+  GET|HEAD   projects projects.index ΓÇ║ ProjectController@inΓÇª
+  GET|HEAD   projects/{project} projects.show ΓÇ║ ProjectCoΓÇª
+  GET|HEAD   storage/{path} storΓÇª
+  GET|HEAD   up .... 
+  GET|HEAD   {fallbackPlaceholder} 
+
+ Showing [80] routes
+
